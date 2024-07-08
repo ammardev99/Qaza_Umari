@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:qaza_e_umri/models/nimaz.dart';
 import 'package:qaza_e_umri/ui/screens/homepage/nav_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -63,19 +64,49 @@ class _MonthlyQazaState extends State<MonthlyQaza> {
     _loadPrayersCount();
   }
 
-  void _loadPrayersCount() async {
-    Map<String, int> prayersCount =
-        await countPrayersEqualToOneForCurrentUser();
-    setState(() {
-      _prayersCount = prayersCount;
-      fajar = prayersCount['Fajar']!.toInt();
-      asar = prayersCount['Zohar']!.toInt();
-      zohar = prayersCount['Asar']!.toInt();
-      maghrib = prayersCount['Maghrib']!.toInt();
-      isha = prayersCount['Isha']!.toInt();
-      witr = prayersCount['Witr']!.toInt();
-    });
-  }
+void _loadPrayersCount() async {
+  Map<String, int> prayersCount = await countPrayersEqualToOneForCurrentUser();
+  setState(() {
+    _prayersCount = prayersCount;
+    fajar = prayersCount['Fajar']!.toInt();
+    zohar = prayersCount['Zohar']!.toInt();
+    asar = prayersCount['Asar']!.toInt();
+    maghrib = prayersCount['Maghrib']!.toInt();
+    isha = prayersCount['Isha']!.toInt();
+    witr = prayersCount['Witr']!.toInt();
+  });
+  MonthlyQazaNimazRecord.setNimaz(true, fajar, zohar, asar, maghrib, isha, witr);
+  MonthlyQazaNimazRecord.printNimazValue();
+}
+
+
+void _MonthResetPrayersCount() async {
+  setState(() {
+    // Set all the prayer counts to zero
+    fajar = 0;
+    zohar = 0;
+    asar = 0;
+    maghrib = 0;
+    isha = 0;
+    witr = 0;
+
+    // Update the _prayersCount map to zero values
+    _prayersCount = {
+      'Fajar': fajar,
+      'Zohar': zohar,
+      'Asar': asar,
+      'Maghrib': maghrib,
+      'Isha': isha,
+      'Witr': witr,
+    };
+
+    // Set the Nimaz values to zero
+    MonthlyQazaNimazRecord.setNimaz(true, fajar, zohar, asar, maghrib, isha, witr);
+    MonthlyQazaNimazRecord.printNimazValue();
+  });
+}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +121,6 @@ class _MonthlyQazaState extends State<MonthlyQaza> {
                   return const NavBar();
                 })),
             icon: Icon(Icons.arrow_back)),
-
       ),
       body: _prayersCount.isEmpty
           ? Center(child: CircularProgressIndicator())
