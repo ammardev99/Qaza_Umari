@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "898537324107",
+    "project_id": "qazaumri-9f2b2",
+    "storage_bucket": "qazaumri-9f2b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898537324107:android:20f007b205267fa66c97ce",
+        "android_client_info": {
+          "package_name": "com.twintechsoft.islamicapp.qaza_e_umri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898537324107-riru8tvv6pgbeuaopgbn5126si63de6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.twintechsoft.islamicapp.qaza_e_umri",
+            "certificate_hash": "d84f1352cff34d3931ae7485da038eccc939766c"
+          }
+        },
+        {
+          "client_id": "898537324107-23a15gvuu6u4533avd6usf33dfar21i3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA1zFlbZf6n7ExUtb2FdHBA-F3YkesfC8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898537324107-23a15gvuu6u4533avd6usf33dfar21i3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

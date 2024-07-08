@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">qaza_e_umri</string>
+    <string name="facebook_app_id">664424175793094</string>
+    <string name="fb_login_protocol_scheme">fb664424175793094</string>
+    <string name="facebook_client_token">96520ac853399cdaee003b2cc68d5dab</string>
+</resources>
