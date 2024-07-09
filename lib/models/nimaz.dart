@@ -15,8 +15,8 @@ class Nimaz {
     this.Isha,
     this.Witer,
   );
-  void setNimaz(d, int f, int z, int a, int m, int i, int w) {
-    NimazData = d;
+  void setNimaz(status, int f, int z, int a, int m, int i, int w) {
+    NimazData = status;
     Fajar = f;
     Zoher = z;
     Asr = a;
@@ -25,9 +25,20 @@ class Nimaz {
     Witer = w;
   }
 
+  void addPreviousMonth(status, int f, int z, int a, int m, int i, int w) {
+    NimazData = status;
+    Fajar += f;
+    Zoher += z;
+    Asr += a;
+    Maghrib += m;
+    Isha += i;
+    Witer += w;
+  }
+
   void printNimazValue() {
-    print("\n$Fajar\t$Zoher\t$Asr\t$Maghrib\t$Isha\t$Witer\t");
+    print("\n$NimazData\t$Fajar\t$Zoher\t$Asr\t$Maghrib\t$Isha\t$Witer\t");
   }
 }
 
-Nimaz MonthlyQazaNimazRecord = Nimaz(true, 0, 0, 0, 0, 0, 0);
+Nimaz TestMonthlyQazaNimazRecord = Nimaz(true, 0, 0, 0, 0, 0, 0);
+Nimaz TestQazaUmariNimazRecord = Nimaz(true, 0, 0, 0, 0, 0, 0);

@@ -9,7 +9,9 @@ import 'package:get/get.dart';
 import 'package:qaza_e_umri/core/controller/qaza_umri_controller.dart';
 import 'package:qaza_e_umri/main.dart';
 import 'package:qaza_e_umri/constants/assets_path.dart';
+import 'package:qaza_e_umri/models/load_monthly_qaza.dart';
 import 'package:qaza_e_umri/models/nimaz.dart';
+import 'package:qaza_e_umri/models/qaza_manager.dart';
 import 'package:qaza_e_umri/ui/widgets/reusable_qaza_umri.dart';
 import 'package:sizer/sizer.dart';
 
@@ -63,30 +65,21 @@ class _QazaUmriState extends State<QazaUmri> {
   TextEditingController ishaController = TextEditingController();
   TextEditingController witrController = TextEditingController();
 
-void addMonthlyQaza() {
-  setState(() {
-    _qazaumriController.fjrTotal.value += MonthlyQazaNimazRecord.Fajar;
-    _qazaumriController.zhrTotal.value += MonthlyQazaNimazRecord.Zoher;
-    _qazaumriController.asrTotal.value += MonthlyQazaNimazRecord.Asr;
-    _qazaumriController.mgrbTotal.value += MonthlyQazaNimazRecord.Maghrib;
-    _qazaumriController.ishaTotal.value += MonthlyQazaNimazRecord.Isha;
-    _qazaumriController.witrTotal.value += MonthlyQazaNimazRecord.Witer;
-
-    // Debug prints to check values before resetting
-    debugPrint("Updated Asar Total: ${_qazaumriController.asrTotal.value}");
-    debugPrint("Updated Fajar Total: ${_qazaumriController.fjrTotal.value}");
-    debugPrint("Updated Zoher Total: ${_qazaumriController.zhrTotal.value}");
-    debugPrint("Updated Maghrib Total: ${_qazaumriController.mgrbTotal.value}");
-    debugPrint("Updated Isha Total: ${_qazaumriController.ishaTotal.value}");
-    debugPrint("Updated Witr Total: ${_qazaumriController.witrTotal.value}");
-
-    // Reset the monthly record to zero
-    MonthlyQazaNimazRecord.setNimaz(false, 0, 0, 0, 0, 0, 0);
-    
-    // Debug print to confirm reset
-    MonthlyQazaNimazRecord.printNimazValue();
-  });
-}
+  void addMonthlyQaza() {
+    loadMonthlyQazaRecord();
+    setState(() {
+      _qazaumriController.fjrTotal.value += TestMonthlyQazaNimazRecord.Fajar;
+      _qazaumriController.zhrTotal.value += TestMonthlyQazaNimazRecord.Zoher;
+      _qazaumriController.asrTotal.value += TestMonthlyQazaNimazRecord.Asr;
+      _qazaumriController.mgrbTotal.value += TestMonthlyQazaNimazRecord.Maghrib;
+      _qazaumriController.ishaTotal.value += TestMonthlyQazaNimazRecord.Isha;
+      _qazaumriController.witrTotal.value += TestMonthlyQazaNimazRecord.Witer;
+      // Reset the monthly record to zero
+      TestMonthlyQazaNimazRecord.setNimaz(false, 0, 0, 0, 0, 0, 0);
+      // Reset the monthly Qaza counts
+      QazaManager().resetMonthlyPrayersCount();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,20 +116,21 @@ void addMonthlyQaza() {
                   const Spacer(),
                   IconButton(
                     onPressed: () {
+                      setState(() {});
                       setState(() {
-                        MonthlyQazaNimazRecord.NimazData == true
+                        TestMonthlyQazaNimazRecord.NimazData == true
                             ? addMonthlyQaza()
                             : '';
                       });
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           backgroundColor: Colors.green,
-                          content: MonthlyQazaNimazRecord.NimazData == true
-                              ? Text("Update")
+                          content: TestMonthlyQazaNimazRecord.NimazData == true
+                              ? Text("Add Recorde Update")
                               : Text("1st Open Monthly Qaza"),
                         ),
                       );
-                      MonthlyQazaNimazRecord.printNimazValue();
+                      TestMonthlyQazaNimazRecord.printNimazValue();
                     },
                     icon: Icon(
                       Icons.nearby_error,

@@ -7,6 +7,7 @@ import 'package:qaza_e_umri/main.dart';
 import 'package:qaza_e_umri/ui/screens/inner_screen/daily_prayer.dart';
 import 'package:qaza_e_umri/ui/screens/inner_screen/dashboard/dashboard.dart';
 import 'package:qaza_e_umri/ui/screens/homepage/menu.dart';
+import 'package:qaza_e_umri/ui/screens/month_end.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants/app_constants.dart';
@@ -139,7 +140,19 @@ class _NavBarState extends State<NavBar> {
                         getBoolValuesSF();
                       });
                     },
-                  )
+                  ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MonthEndTest()),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.nearby_error,
+                        color: Colors.red,
+                      ),
+                    ),
           ],
           //backgroundColor: Colors.purple,
           flexibleSpace: Container(
