@@ -52,30 +52,6 @@ Future<void> loadMonthlyQazaRecord() async {
     prayersCount['Isha']!.toInt(),
     prayersCount['Witr']!.toInt(),
   );
+  print("\nQaza Monthly Load");
+  TestMonthlyQazaNimazRecord.printNimazValue();
 }
-
-
-
-
-                  // IconButton(
-                  //   onPressed: () {
-                  //     setState(() {
-                  //       MonthlyQazaNimazRecord.NimazData == true
-                  //           ? addMonthlyQaza()
-                  //           : '';
-                  //     });
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         backgroundColor: Colors.green,
-                  //         content: MonthlyQazaNimazRecord.NimazData == true
-                  //             ? Text("Add Recorde Update")
-                  //             : Text("1st Open Monthly Qaza"),
-                  //       ),
-                  //     );
-                  //     MonthlyQazaNimazRecord.printNimazValue();
-                  //   },
-                  //   icon: Icon(
-                  //     Icons.nearby_error,
-                  //     color: Colors.red,
-                  //   ),
-                  // ),

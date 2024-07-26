@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:qaza_e_umri/models/load_monthly_qaza.dart';
 import 'package:qaza_e_umri/models/load_umari_qaza.dart';
 import 'package:qaza_e_umri/models/nimaz.dart';
+import 'package:qaza_e_umri/ui/utils/monthly_qaza_utils.dart';
+import 'package:qaza_e_umri/ui/utils/umari_qaza_utils.dart';
 
 class MonthEndTest extends StatefulWidget {
   const MonthEndTest({super.key});
@@ -129,7 +131,10 @@ class _MonthEndTestState extends State<MonthEndTest> {
                           ),
                           onPressed: () {
                             setState(() {
-                              addMonthlyToQazaUmari();
+                              // addMonthlyToQazaUmari();
+                              addMonthlyToQazaUmariAndUpdateFirestore();
+                              resetMonthlyPrayersCountInDatabase();
+
                             });
                           },
                           child: Text(

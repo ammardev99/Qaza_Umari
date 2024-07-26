@@ -326,6 +326,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                           ),
                         ),
+
+                        TextButton(onPressed: (){
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Home();
+                                  }));
+
+
+                        }, child:Text('Home'))
                       ],
                     ),
                   ),
